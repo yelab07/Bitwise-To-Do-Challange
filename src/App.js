@@ -6,6 +6,7 @@ import FormContainer from "./Components/FormContainer";
 import Button from "./Components/Button";
 import TodoContainer from "./Components/TodoContainer";
 import Todo from "./Components/Todo";
+import H1Styled from "./Components/H1Styled";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -43,18 +44,21 @@ function App() {
     marginLeft: "5px",
     marginRight: "5px",
   };
-
+  
   return (
     <div className="App">
       <FormContainer>
+        <H1Styled>
+          <h1>Plans for today</h1>
+        </H1Styled>
         <Form onSubmit={addToTodos}>
           <Input
             onChange={formChange}
             name="text"
             type="text"
-            placeholder="todo text"
+            placeholder="Add a to do.."
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Add to do </Button>
         </Form>
       </FormContainer>
 
