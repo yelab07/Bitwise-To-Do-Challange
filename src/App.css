@@ -1,11 +1,13 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  background-color: #f36997;
   
 }
-.h{
+/* .h{
   position:absolute;
-}
+  background: ;
+} */
 
 .App {
   text-align: center;

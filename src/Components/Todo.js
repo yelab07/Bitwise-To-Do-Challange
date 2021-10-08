@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Todo = styled.form`
   width: 600px;
+  /* margin:300px; */
   border: 0.5px solid #616161;
   border-radius: 10px;
   padding: 20px;
