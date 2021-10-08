@@ -8,23 +8,34 @@ import TodoContainer from "./Components/TodoContainer";
 import Todo from "./Components/Todo";
 
 function App() {
-  const [todos, setTodos] = useState(["Hello", "How are you?"]);
+  const [todos, setTodos] = useState([]);
   const [todoText,setTodoText]=useState("")
 
   // console.log(todos);
   //saveing on type to my state
   const formChange = (e) => {
-    console.log(e.target.value);
-    // setTodoText(e.target.value);
+    // console.log(e.target.value);
+    setTodoText(e.target.value);
   };
   const addToTodos = (e) => {
     e.preventDefault();
     const copyOfArrey = ([...todos]);
     copyOfArrey.push(todoText);
-     (todoText);
+     setTodos(copyOfArrey);
   };
-  const deleteTodo = (index) => {};
-  const updateTodo = (index) => {};
+  const deleteTodo = (index) => {
+    const copyOfArrey = ([...todos]);
+    copyOfArrey.splice(index, 1);
+    setTodos(copyOfArrey);
+    
+   };
+  
+  const updateTodo = (index) => {
+    const copyOfArrey = ([...todos]);
+    copyOfArrey[index] = todoText;
+    setTodos(copyOfArrey);
+   };
+  
   // const formChange = (e) => {};
 
   const btnStyles = {
@@ -37,8 +48,12 @@ function App() {
     <div className="App">
       <FormContainer>
         <Form onSubmit={addToTodos}>
-          <Input onChange={formChange}
- name="text" type="text" placeholder="todo text" />
+          <Input
+            onChange={formChange}
+            name="text"
+            type="text"
+            placeholder="todo text"
+          />
           <Button type="submit">Submit</Button>
         </Form>
       </FormContainer>
@@ -47,8 +62,24 @@ function App() {
         {todos.map((todo, index) => (
           <Todo key={index}>
             <h1>{todo}</h1>
-            <Button style={btnStyles}>Delete</Button>
-            <Button style={btnStyles}>Update</Button>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                deleteTodo(index);
+              }}
+              style={btnStyles}
+            >
+              Delete
+            </Button>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                updateTodo(index);
+              }}
+              style={btnStyles}
+            >
+              Update
+            </Button>
           </Todo>
         ))}
       </TodoContainer>
