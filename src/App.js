@@ -8,12 +8,24 @@ import TodoContainer from "./Components/TodoContainer";
 import Todo from "./Components/Todo";
 
 function App() {
-  const [todos, setTodos] = useState(["hello", "How are you"]);
+  const [todos, setTodos] = useState(["Hello", "How are you?"]);
+  const [todoText,setTodoText]=useState("")
 
-  const addToTodos = (e) => {};
+  // console.log(todos);
+  //saveing on type to my state
+  const formChange = (e) => {
+    console.log(e.target.value);
+    // setTodoText(e.target.value);
+  };
+  const addToTodos = (e) => {
+    e.preventDefault();
+    const copyOfArrey = ([...todos]);
+    copyOfArrey.push(todoText);
+     (todoText);
+  };
   const deleteTodo = (index) => {};
   const updateTodo = (index) => {};
-  const formChange = (e) => {};
+  // const formChange = (e) => {};
 
   const btnStyles = {
     marginTop: "20px",
@@ -24,8 +36,9 @@ function App() {
   return (
     <div className="App">
       <FormContainer>
-        <Form>
-          <Input name="text" type="text" placeholder="todo text" />
+        <Form onSubmit={addToTodos}>
+          <Input onChange={formChange}
+ name="text" type="text" placeholder="todo text" />
           <Button type="submit">Submit</Button>
         </Form>
       </FormContainer>
